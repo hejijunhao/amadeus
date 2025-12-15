@@ -1,7 +1,8 @@
 %% golden-hour.ly
-%% Nostalgic melodic house piano loop
+%% Melancholic melodic house piano loop
 %% Style: Ben Böhmer / melodic house
-%% Progression: D - G - Bm - B - F#m - D
+%% Foundation: D – B – G – F# – D
+%% Melody: D/C#/E interplay, resolving to F#
 
 \version "2.24.0"
 
@@ -19,69 +20,61 @@
 %% MUSICAL CONTENT
 %% ============================================================
 
-%% Right hand - flowing melody with suspensions
+%% Right hand - melancholic melody (D/C#/E tension, F# resolution)
 upper = \relative c'' {
   \clef treble
   \key d \major
   \time 4/4
-  \tempo "Nostalgic" 4 = 122
+  \tempo "Melancholic" 4 = 122
 
-  %% Bar 1: D major - opening statement
-  r4 fis8\p( e d4 a' |
+  %% Bar 1: D foundation - melody enters on D
+  r2 d4.\p( e8 |
 
-  %% Bar 2: G major - ascending hope
-  g4. fis8 e4 d) |
+  %% Bar 2: B foundation - C# tension
+  cis2 d4 e) |
 
-  %% Bar 3: Bm - gentle descent
-  d4(\mp cis8 b~ b4 fis' |
+  %% Bar 3: G foundation - E lingers
+  e2.( d4 |
 
-  %% Bar 4: B major - the bittersweet turn
-  fis4. e8 dis4 b) |
+  %% Bar 4: F# foundation - pull toward resolution
+  cis4 d e cis) |
 
-  %% Bar 5: F#m - introspection
-  cis4.\mf( d8 e4 fis |
+  %% Bar 5: D return - restate
+  d2\mp( e4. d8 |
 
-  %% Bar 6: F#m cont. - longing
-  e4 d cis a) |
+  %% Bar 6: B foundation - deeper C#
+  cis2. d4) |
 
-  %% Bar 7: D - return home
-  d4(\mp e8 fis~ fis4 a |
+  %% Bar 7: G - E yearning
+  e2( d4 cis |
 
-  %% Bar 8: D - resolve to loop
-  g4. fis8 e4 d)\p |
+  %% Bar 8: F# - resolve to F#
+  d4 e fis2)\p |
 
   \bar ":|."
 }
 
-%% Left hand - arpeggiated pattern (melodic house style)
+%% Left hand - intimate piano chords (D – B – G – F#), half time
 lower = \relative c {
   \clef bass
   \key d \major
   \time 4/4
 
-  %% Bar 1: D major arpeggio
-  d8\p( a' d fis a, d fis a, |
+  %% Bars 1-2: D major - open voicing, root position
+  <d, a' d fis>1\p( |
+  <d a' d fis>1) |
 
-  %% Bar 2: G major arpeggio
-  g,8 d' g b d, g b d,) |
+  %% Bars 3-4: Bm - the descent
+  <b fis' b d>1( |
+  <b fis' b d>1) |
 
-  %% Bar 3: Bm arpeggio
-  b8( fis' b d fis, b d fis, |
+  %% Bars 5-6: G major - warmth
+  <g d' g b>1( |
+  <g d' g b>1) |
 
-  %% Bar 4: B major arpeggio - the lift
-  b,8 fis' b dis fis, b dis fis,) |
-
-  %% Bar 5: F#m arpeggio
-  fis,8( cis' fis a cis, fis a cis, |
-
-  %% Bar 6: F#m cont.
-  fis,8 cis' fis a cis, fis a cis,) |
-
-  %% Bar 7: D - home
-  d,8( a' d fis a, d fis a, |
-
-  %% Bar 8: D - loop point
-  d,8 a' d fis a, d fis a,) |
+  %% Bars 7-8: F#m - unresolved
+  <fis cis' fis a>1( |
+  <fis cis' fis a>1) |
 
   \bar ":|."
 }
