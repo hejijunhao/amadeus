@@ -1,0 +1,18 @@
+# Generated output
+output/
+
+# LilyPond artifacts
+*.pdf
+*.midi
+*.mid
+*.ps
+*.eps
+*.log
+
+# macOS
+.DS_Store
+
+# Editor files
+*~
+*.swp
+*.swo
