@@ -16,13 +16,12 @@ build: $(SCORES)
 	@for score in $(SCORES); do \
 		echo "Engraving: $$score"; \
 		$(LILYPOND) \
-			--output=$(OUTPUT_PDF)/$$(basename $$score .ly) \
 			--include=lilypond/templates \
 			--include=lilypond/includes \
 			$$score; \
-		if [ -f "$(OUTPUT_PDF)/$$(basename $$score .ly).midi" ]; then \
-			mv "$(OUTPUT_PDF)/$$(basename $$score .ly).midi" $(OUTPUT_MIDI)/; \
-		fi; \
+		name=$$(basename $$score .ly); \
+		mv $$name.pdf $(OUTPUT_PDF)/ 2>/dev/null || true; \
+		mv $$name.midi $(OUTPUT_MIDI)/ 2>/dev/null || true; \
 	done
 	@echo "Done. Output in $(OUTPUT_PDF)/ and $(OUTPUT_MIDI)/"
 
@@ -37,13 +36,11 @@ clean:
 single:
 	@mkdir -p $(OUTPUT_PDF) $(OUTPUT_MIDI)
 	$(LILYPOND) \
-		--output=$(OUTPUT_PDF)/$(SCORE) \
 		--include=lilypond/templates \
 		--include=lilypond/includes \
 		$(SCORES_DIR)/$(SCORE).ly
-	@if [ -f "$(OUTPUT_PDF)/$(SCORE).midi" ]; then \
-		mv "$(OUTPUT_PDF)/$(SCORE).midi" $(OUTPUT_MIDI)/; \
-	fi
+	@mv $(SCORE).pdf $(OUTPUT_PDF)/ 2>/dev/null || true
+	@mv $(SCORE).midi $(OUTPUT_MIDI)/ 2>/dev/null || true
 
 .PHONY: help
 help:
